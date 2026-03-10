@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Processing Sketch</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+</head>
+
+<body>
+<script>
+
+let rad, r, dr, d;
+let c;
+
+function setup() {
+  createCanvas(800, 800);
+  background(0);
+
+  rad = 0.0;
+  r = 0.0;
+  dr = 5.0;   // you can change value
+  d = 200;
+
+  c = color(random(255), random(255), random(255));
+}
+
+function draw() {
+  noStroke();
+  fill(c);
+
+  ellipse(
+    r * cos(rad) + width/2,
+    r * sin(rad) + height/2,
+    10,
+    10
+  );
+
+  r += dr;
+  rad += PI / 300; // you can change value
+
+  if (r < 0 || r > d) {
+    dr = -dr;
+  }
+
+  if (frameCount % 1000 === 0) {
+    c = color(random(255), random(255), random(255));
+  }
+}
+
+</script>
+</body>
+</html>
